@@ -1,50 +1,52 @@
 #include "Database.h"
-char* ServerSignUp(char* username, char* password){
-    FILE *LoginData;
-    FILE *UserData;
-    char usercopy[NAME] = "0"; /*copy of username to be manipulated*/
-    char usercopy2[NAME] = "0"; /*copy of username to be manipulated*/
-	char Data_uname[NAME] = "0";
-	char Data_pwd[NAME] = "0";
-    char pwdcopy[NAME] = "0"; /*copy of username to be manipulated*/
-	int Filelength = 0;
-	char UserDataPath[256] =  "Database/Usernames/";
-	
-//	char Data_uname[NAME] = "0";
-    strcpy(usercopy,username);
-    strcpy(usercopy2,username);
-    strcpy(pwdcopy, password);
-	LoginData = fopen("Database/Login.txt", "r");
-    strcat(usercopy,"\n");
-    strcat(pwdcopy,"\n");
-	while(fgetc(LoginData) !=EOF){ /*loop to increment Filelength until it has reached the length of the entire file's contents*/
-		Filelength++;
-	} 
-	fclose(LoginData);
-    LoginData = fopen("Database/Login.txt", "r");
-	if(Filelength !=0){                       
-        while(feof(LoginData)== 0){
-        	fgets(Data_uname, NAME-1, LoginData); /*gets first line for user which is the username*/
-        	fgets(Data_pwd, NAME-1, LoginData); /*gets first line for user which is the username*/
-        	if(strcmp(usercopy, Data_uname) == 0){ /*compares login data from text file to what is inputted by user to check for match*/
-				fclose(LoginData);
-				return ERRUSER_AE;
-			}
-		}
-	}
-	fclose(LoginData);
-    LoginData = fopen("Database/Login.txt", "a");
-    fprintf(LoginData,"%s\n", username);
-    fprintf(LoginData,"%s\n", password);
-	CreateFolder(strcat(UserDataPath,usercopy2));
-	strcat(UserDataPath, "/");
-        UserData = fopen(strcat(UserDataPath,"Contacts.txt"), "w"); /*concatonates username copy string to add txt extension to access specified user's files*/
-        //UserData = fopen( strcat(usercopy2,".txt"), "w"); /*concatonates username copy string to add txt extension to access specified user's files*/
-        fclose(LoginData);
-        fclose(UserData);
-        return SUCCESSSIGNUP;
 
-}
+/*code to be augmented*/
+// char* ServerSignUp(char* username, char* password){
+//     FILE *LoginData;
+//     FILE *UserData;
+//     char usercopy[NAME] = "0"; /*copy of username to be manipulated*/
+//     char usercopy2[NAME] = "0"; /*copy of username to be manipulated*/
+// 	char Data_uname[NAME] = "0";
+// 	char Data_pwd[NAME] = "0";
+//     char pwdcopy[NAME] = "0"; /*copy of username to be manipulated*/
+// 	int Filelength = 0;
+// 	char UserDataPath[256] =  "Database/Usernames/";
+	
+// //	char Data_uname[NAME] = "0";
+//     strcpy(usercopy,username);
+//     strcpy(usercopy2,username);
+//     strcpy(pwdcopy, password);
+// 	LoginData = fopen("Database/Login.txt", "r");
+//     strcat(usercopy,"\n");
+//     strcat(pwdcopy,"\n");
+// 	while(fgetc(LoginData) !=EOF){ /*loop to increment Filelength until it has reached the length of the entire file's contents*/
+// 		Filelength++;
+// 	} 
+// 	fclose(LoginData);
+//     LoginData = fopen("Database/Login.txt", "r");
+// 	if(Filelength !=0){                       
+//         while(feof(LoginData)== 0){
+//         	fgets(Data_uname, NAME-1, LoginData); /*gets first line for user which is the username*/
+//         	fgets(Data_pwd, NAME-1, LoginData); /*gets first line for user which is the username*/
+//         	if(strcmp(usercopy, Data_uname) == 0){ /*compares login data from text file to what is inputted by user to check for match*/
+// 				fclose(LoginData);
+// 				return ERRUSER_AE;
+// 			}
+// 		}
+// 	}
+// 	fclose(LoginData);
+//     LoginData = fopen("Database/Login.txt", "a");
+//     fprintf(LoginData,"%s\n", username);
+//     fprintf(LoginData,"%s\n", password);
+// 	CreateFolder(strcat(UserDataPath,usercopy2));
+// 	strcat(UserDataPath, "/");
+//         UserData = fopen(strcat(UserDataPath,"Contacts.txt"), "w"); /*concatonates username copy string to add txt extension to access specified user's files*/
+//         //UserData = fopen( strcat(usercopy2,".txt"), "w"); /*concatonates username copy string to add txt extension to access specified user's files*/
+//         fclose(LoginData);
+//         fclose(UserData);
+//         return SUCCESSSIGNUP;
+
+// }
 int SignUpExists(char *username) //Returns 1 if username exists, 0 if not
 {
 	FILE *login;
